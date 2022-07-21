@@ -1,0 +1,27 @@
+{
+  "name": "ybot",
+  "version": "1.0.0",
+  "description": "Fancy bot for block game",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node .",
+    "dev": "nodemon ."
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "eslint": "^8.20.0",
+    "eslint-config-standard": "^17.0.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-n": "^15.2.4",
+    "eslint-plugin-promise": "^6.0.0"
+  },
+  "dependencies": {
+    "minimist": "^1.2.6",
+    "nodemon": "^2.0.19",
+    "randomstring": "^1.2.2",
+    "yargs-parser": "^21.0.1"
+  }
+}
