@@ -43,6 +43,7 @@ function inject (bot) {
   discord._client.on('messageCreate', message => {
     if (message.channelId !== channelId) return
     if (message.author.id === discord._client.user.id) return
+    if (message.content.startsWith(config.discord.prefix)) return
 
     const data = [
       {
