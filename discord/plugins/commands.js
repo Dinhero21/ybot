@@ -6,7 +6,7 @@ const loadFiles = require('../../util/load_files')
 const path = require('path')
 
 function inject (bot) {
-  const commands = loadFiles(path.join(__dirname, '../../commands'))
+  bot.commands = loadFiles(path.join(__dirname, '../../commands'))
 
   bot._client.on('messageCreate', async message => {
     if (message.author.id === bot._client.user.id) return
@@ -21,7 +21,7 @@ function inject (bot) {
 
     const handler = new DiscordCommandHandler(bot, raw, args, message)
 
-    const command = commands.find(command => command.name === commandName)
+    const command = bot.commands.find(command => command.name === commandName)
 
     if (command === undefined) {
       handler.sendError(new UnknownCommandError(`Unknown command: ${commandName}`))

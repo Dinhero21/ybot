@@ -1,3 +1,5 @@
+const { EmbedBuilder } = require('discord.js')
+
 module.exports = {
   name: 'help',
   minecraft (handler) {
@@ -45,6 +47,13 @@ module.exports = {
     message.pop()
 
     handler.sendMessage('@a', message)
+  },
+  discord (handler) {
+    const embed = new EmbedBuilder()
+      .setTitle('Commands')
+      .setDescription(handler.bot.commands.map(command => `\`${command.name}\``).join('|'))
+
+    handler.sendEmbeds(embed)
   },
   color (command) {
     let color = 'green'
