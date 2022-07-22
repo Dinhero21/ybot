@@ -19,6 +19,7 @@
     "eslint-plugin-promise": "^6.0.0"
   },
   "dependencies": {
+    "discord.js": "^14.0.3",
     "minimist": "^1.2.6",
     "nodemon": "^2.0.19",
     "randomstring": "^1.2.2",

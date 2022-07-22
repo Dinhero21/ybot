@@ -1,10 +1,13 @@
 const config = require('../../config.json')
-const MinecraftCommandParserError = require('../../errors/minecraft/command/parsing')
+const UnknownCommandError = require('../../errors/command/unknown')
+const UnsupportedCommandError = require('../../errors/command/unsupported')
 const MinecraftCommandHandler = require('../../command-handler/minecraft')
 const loadFiles = require('../../util/load_files')
 const path = require('path')
 
 function inject (bot) {
+  bot.commands = loadFiles(path.join(__dirname, '../../commands'))
+
   bot.on('message', async (username, message) => {
     for (const prefix of config.prefixes) {
       if (!message.startsWith(prefix)) continue
@@ -15,18 +18,16 @@ function inject (bot) {
 
       const handler = new MinecraftCommandHandler(bot, raw, args, prefix)
 
-      const commands = loadFiles(path.join(__dirname, '../../commands'))
-
-      const command = commands.find(command => command.name === commandName)
+      const command = bot.commands.find(command => command.name === commandName)
 
       if (command === undefined) {
-        handler.sendError(new MinecraftCommandParserError(`Unknown command: ${commandName}`))
+        handler.sendError(new UnknownCommandError(`Unknown command: ${commandName}`))
 
         return
       }
 
       if (command.minecraft === undefined) {
-        handler.sendError(new MinecraftCommandParserError(`${commandName} is not supported`))
+        handler.sendError(new UnsupportedCommandError(`${commandName} is not supported`))
 
         return
       }

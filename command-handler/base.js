@@ -1,9 +1,8 @@
 class BaseCommandHandler {
-  constructor (bot, raw, args, prefix) {
+  constructor (bot, raw, args) {
     this.bot = bot
     this.raw = raw
     this.args = args
-    this.prefix = prefix
   }
 }
 
