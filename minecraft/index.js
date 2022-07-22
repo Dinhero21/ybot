@@ -37,8 +37,4 @@ function createBots (servers) {
   }
 }
 
-function getBots () {
-  return bots
-}
-
-module.exports = { createBots, getBots }
+module.exports = { createBots, bots }
