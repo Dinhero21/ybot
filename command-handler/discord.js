@@ -1,3 +1,4 @@
+const config = require('../config.json')
 const BaseCommandHandler = require('./base')
 const { EmbedBuilder } = require('discord.js')
 
@@ -8,6 +9,18 @@ class DiscordCommandHandler extends BaseCommandHandler {
     this.message = message
     this.author = message.author
     this.channelId = message.channelId
+
+    const server = Object.entries(config.discord.servers).find(([server, channelId]) => channelId === this.channelId)[0]
+
+    this.server = server
+
+    const { bots } = require('../minecraft')
+
+    this.bots = bots
+
+    const minecraft = bots[server]
+
+    this.minecraft = minecraft
   }
 
   sendError (error) {
