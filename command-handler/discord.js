@@ -10,7 +10,11 @@ class DiscordCommandHandler extends BaseCommandHandler {
     this.author = message.author
     this.channelId = message.channelId
 
-    const server = Object.entries(config.discord.servers).find(([server, channelId]) => channelId === this.channelId)[0]
+    const entries = Object.entries(config.discord.servers).find(([server, channelId]) => channelId === this.channelId)
+
+    if (!entries) return
+
+    const [server] = entries
 
     this.server = server
 
