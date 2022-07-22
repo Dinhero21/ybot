@@ -29,14 +29,14 @@ function inject (bot) {
       return
     }
 
-    if (command.minecraft === undefined) {
+    if (command.discord === undefined) {
       handler.sendError(new UnsupportedCommandError(`${commandName} is not supported`))
 
       return
     }
 
     try {
-      await command.minecraft(handler)
+      await command.discord(handler)
     } catch (error) {
       handler.sendError(error)
     }
