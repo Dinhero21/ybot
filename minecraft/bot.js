@@ -33,6 +33,12 @@ function createBot (options) {
 
   bot.write = (name, data) => bot._client.write(name, data)
   bot.chat = message => bot.write('chat', { message })
+  bot.end = () => {
+    bot.removeAllListeners()
+
+    bot._client.end()
+    bot._client.removeAllListeners()
+  }
 
   bot.loadPlugin = plugin => plugin.inject(bot)
 

@@ -15,7 +15,7 @@ function inject (bot) {
 
   let text = ''
 
-  bot.on('parsed_chat', (data, raw) => {
+  function handleParsedChat (data, raw) {
     const message = JSON.parse(raw.message)
 
     // Disable logging of "Command set: "
@@ -23,7 +23,9 @@ function inject (bot) {
 
     text += data.clean
     text += '\n'
-  })
+  }
+
+  bot.on('parsed_chat', handleParsedChat)
 
   setInterval(() => {
     const channel = discord._client.channels.cache.get(channelId)
@@ -40,7 +42,7 @@ function inject (bot) {
     text = text.slice(1000)
   }, 1000)
 
-  discord._client.on('messageCreate', message => {
+  function handleDiscordMessage (message) {
     if (message.channelId !== channelId) return
     if (message.author.id === discord._client.user.id) return
     if (message.content.startsWith(config.discord.prefix)) return
@@ -117,7 +119,15 @@ function inject (bot) {
     ]
 
     bot.core.run(tellraw('@a', data))
-  })
+  }
+
+  discord._client.on('messageCreate', handleDiscordMessage)
+
+  function handleEnd (reason, sender) {
+    text += `${sender}: ${reason}`
+  }
+
+  bot.on('end', handleEnd)
 }
 
 module.exports = { inject }
