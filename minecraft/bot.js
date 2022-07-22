@@ -53,13 +53,13 @@ function createBot (options) {
   bot._client.on('kick_disconnect', data => {
     const parsed = JSON.parse(data.reason)
 
-    this.emit('end', parsed, 'kick_disconnect')
+    bot.emit('end', parsed, 'kick_disconnect')
   })
 
   bot._client.on('disconnect', data => {
     const parsed = JSON.parse(data.reason)
 
-    this.emit('end', parsed, 'disconnect')
+    bot.emit('end', parsed, 'disconnect')
   })
 
   return bot
