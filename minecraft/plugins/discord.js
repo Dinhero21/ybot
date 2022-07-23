@@ -3,6 +3,8 @@ const discord = require('../../discord')
 const MissingChannelError = require('../../errors/discord/missing-channel')
 const tellraw = require('../../util/command/tellraw')
 const parseMessage = require('../../util/discord/parse_message')
+const util = require('util')
+const { EmbedBuilder } = require('discord.js')
 
 function inject (bot) {
   const { host, port } = bot.options
@@ -124,10 +126,34 @@ function inject (bot) {
   discord._client.on('messageCreate', handleDiscordMessage)
 
   function handleEnd (reason, sender) {
-    text += `${sender}: ${reason}`
+    const channel = discord._client.channels.cache.get(channelId)
+
+    if (!channel) return
+
+    const embed = new EmbedBuilder()
+      .setColor(0xFF0000)
+      .setTitle(sender)
+      .setDescription(`\`\`\`ansi\n${util.inspect(reason, { colors: true })}\`\`\``)
+
+    channel.send({ embeds: [embed] })
   }
 
   bot.on('end', handleEnd)
+
+  function handleError (error) {
+    const channel = discord._client.channels.cache.get(channelId)
+
+    if (!channel) return
+
+    const embed = new EmbedBuilder()
+      .setColor(0xFF0000)
+      .setTitle(error.message)
+      .setDescription(`\`\`\`text\n${error.stack}\`\`\``)
+
+    channel.send({ embeds: [embed] })
+  }
+
+  bot.on('error', handleError)
 }
 
 module.exports = { inject }
