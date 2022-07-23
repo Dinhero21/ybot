@@ -8,7 +8,7 @@ const path = require('path')
 function inject (bot) {
   bot.commands = loadFiles(path.join(__dirname, '../../commands'))
 
-  bot.on('message', async (username, message) => {
+  bot.on('message', async (username, message, sender) => {
     for (const prefix of config.prefixes) {
       if (!message.startsWith(prefix)) continue
 
@@ -16,7 +16,7 @@ function inject (bot) {
 
       const [commandName, ...args] = raw.split(' ')
 
-      const handler = new MinecraftCommandHandler(bot, raw, args, prefix)
+      const handler = new MinecraftCommandHandler(bot, raw, args, prefix, username, sender)
 
       const command = bot.commands.find(command => command.name === commandName)
 

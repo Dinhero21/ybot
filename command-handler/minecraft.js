@@ -2,10 +2,12 @@ const BaseCommandHandler = require('./base')
 const tellraw = require('../util/command/tellraw')
 
 class MinecraftCommandHandler extends BaseCommandHandler {
-  constructor (bot, raw, args, prefix) {
+  constructor (bot, raw, args, prefix, username, sender) {
     super(bot, raw, args)
 
     this.prefix = prefix
+    this.username = username
+    this.sender = sender
   }
 
   sendError (error) {
