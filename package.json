@@ -19,7 +19,9 @@
     "eslint-plugin-promise": "^6.0.0"
   },
   "dependencies": {
+    "axios": "^0.27.2",
     "color-convert": "^2.0.1",
+    "discord-phub": "^1.0.7",
     "discord.js": "^14.0.3",
     "minimist": "^1.2.6",
     "nodemon": "^2.0.19",
