@@ -13,6 +13,7 @@
     "randomstring",
     "rlonmk",
     "tellraw",
+    "urldraw",
     "YBOT"
   ]
 }
