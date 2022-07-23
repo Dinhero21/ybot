@@ -33,7 +33,9 @@ function createBot (options) {
 
   bot.write = (name, data) => bot._client.write(name, data)
   bot.chat = message => bot.write('chat', { message })
-  bot.end = () => {
+  bot.end = (reason = 'end') => {
+    bot.emit('end', reason)
+
     bot.removeAllListeners()
 
     bot._client.end()
