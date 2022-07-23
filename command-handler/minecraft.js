@@ -1,5 +1,6 @@
 const BaseCommandHandler = require('./base')
 const tellraw = require('../util/command/tellraw')
+const { selectUsername } = require('../util/player')
 
 class MinecraftCommandHandler extends BaseCommandHandler {
   constructor (bot, raw, args, prefix, username, sender) {
@@ -17,6 +18,8 @@ class MinecraftCommandHandler extends BaseCommandHandler {
   }
 
   sendMessage (message, selector) {
+    selector ??= selectUsername(this.bot, this.sender)
+
     this.bot.core.run(tellraw(selector, message))
   }
 }
