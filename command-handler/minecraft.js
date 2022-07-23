@@ -9,6 +9,7 @@ class MinecraftCommandHandler extends BaseCommandHandler {
     this.prefix = prefix
     this.username = username
     this.sender = sender
+    this.senderPlayer = bot.players.getPlayer(sender)
   }
 
   sendError (error) {
