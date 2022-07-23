@@ -62,8 +62,6 @@ module.exports = {
 
     if (player === undefined) throw new MissingPlayerError(`Could not find player ${uuid}`)
 
-    console.log(player)
-
     handler.sendMessage([
       {
         text: 'UUID',
