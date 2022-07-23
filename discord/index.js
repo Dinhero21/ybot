@@ -7,7 +7,6 @@ const bot = createBot({
   client: {
     intents: [
       GatewayIntentBits.Guilds,
-      GatewayIntentBits.GuildBans,
       GatewayIntentBits.GuildMessages,
       GatewayIntentBits.MessageContent
     ],
