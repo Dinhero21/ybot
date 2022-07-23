@@ -22,7 +22,7 @@ class MinecraftCommandHandler extends BaseCommandHandler {
   sendMessage (message, selector) {
     selector ??= selectUsername(this.bot, this.sender)
 
-    this.bot.core.run(tellraw(selector, message))
+    this.bot.core?.run(tellraw(selector, message))
   }
 }
 
