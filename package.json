@@ -23,6 +23,7 @@
     "minimist": "^1.2.6",
     "nodemon": "^2.0.19",
     "randomstring": "^1.2.2",
+    "wikipedia": "^1.1.9",
     "yargs-parser": "^21.0.1"
   }
 }
