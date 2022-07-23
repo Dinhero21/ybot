@@ -23,10 +23,12 @@
     "color-convert": "^2.0.1",
     "discord-phub": "^1.0.7",
     "discord.js": "^14.0.3",
+    "minecraft-protocol": "^1.35.1",
     "minimist": "^1.2.6",
     "nodemon": "^2.0.19",
     "randomstring": "^1.2.2",
     "sharp": "^0.30.7",
+    "vec3": "^0.1.7",
     "wikipedia": "^1.1.9",
     "yargs-parser": "^21.0.1"
   }
