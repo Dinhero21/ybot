@@ -1,4 +1,4 @@
-const servers = require('./servers.json')
+const config = require('./config.json')
 const { createBots } = require('./minecraft')
 
-createBots(servers)
+createBots(config.servers)
