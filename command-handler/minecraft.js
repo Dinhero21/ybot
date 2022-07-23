@@ -13,10 +13,10 @@ class MinecraftCommandHandler extends BaseCommandHandler {
     this.selector = selectUsername(bot, sender)
   }
 
-  sendError (error) {
+  sendError (error, sender) {
     if (error instanceof Error) error = error.toString()
 
-    this.sendMessage('@a', { color: 'red', text: error })
+    this.sendMessage({ color: 'red', text: error }, sender)
   }
 
   sendMessage (message, selector) {
