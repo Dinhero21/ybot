@@ -120,7 +120,7 @@ function inject (bot) {
       }
     ]
 
-    bot.core.run(tellraw('@a', data))
+    bot.core?.run(tellraw('@a', data))
   }
 
   discord._client.on('messageCreate', handleDiscordMessage)

@@ -38,7 +38,7 @@ function inject (bot) {
       messages.push(message)
     }
 
-    for (const message of messages) bot.core.run(tellraw(selector, message))
+    for (const message of messages) bot.core?.run(tellraw(selector, message))
   }
 
   bot.draw = draw
