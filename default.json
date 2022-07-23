@@ -1,0 +1,22 @@
+{
+  "prefixes": [
+    "default."
+  ],
+  "core": {
+    "layers": 3
+  },
+  "discord": {
+    "token": "DISCORD TOKEN HERE",
+    "servers": {
+      "IP:PORT": "CHANNEL_ID"
+    },
+    "spam_size": 10000,
+    "prefix": "!"
+  },
+  "servers": [
+    {
+      "host": "localhost",
+      "port": 25565
+    }
+  ]
+}
