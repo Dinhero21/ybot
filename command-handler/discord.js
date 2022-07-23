@@ -34,7 +34,7 @@ class DiscordCommandHandler extends BaseCommandHandler {
       embed = new EmbedBuilder()
         .setColor(0xFF0000)
         .setTitle(error.message)
-        .setDescription(error.stack)
+        .setDescription(`\`\`\`text\n${error.stack}\`\`\``)
     } else {
       embed = new EmbedBuilder()
         .setColor(0xFF0000)
