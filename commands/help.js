@@ -46,7 +46,7 @@ module.exports = {
 
     message.pop()
 
-    handler.sendMessage('@a', message)
+    handler.sendMessage(message, '@a')
   },
   discord (handler) {
     const embed = new EmbedBuilder()

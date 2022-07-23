@@ -16,7 +16,7 @@ class MinecraftCommandHandler extends BaseCommandHandler {
     this.sendMessage('@a', { color: 'red', text: error })
   }
 
-  sendMessage (selector, message) {
+  sendMessage (message, selector) {
     this.bot.core.run(tellraw(selector, message))
   }
 }

@@ -9,6 +9,6 @@ module.exports = {
 
     const summary = await page.summary()
 
-    handler.sendMessage('@a', summary.extract)
+    handler.sendMessage(summary.extract, '@a')
   }
 }
