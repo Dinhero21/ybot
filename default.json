@@ -6,6 +6,7 @@
     "layers": 3
   },
   "discord": {
+    "enabled": false,
     "token": "DISCORD TOKEN HERE",
     "servers": {
       "IP:PORT": "CHANNEL_ID"

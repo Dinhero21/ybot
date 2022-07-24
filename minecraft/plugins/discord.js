@@ -7,6 +7,8 @@ const util = require('util')
 const { EmbedBuilder } = require('discord.js')
 
 function inject (bot) {
+  if (!config.discord.enabled) return
+
   const { host, port } = bot.options
 
   const server = `${host}:${port}`
