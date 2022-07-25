@@ -40,6 +40,6 @@ module.exports = {
         action: 'open_url',
         value: url
       }
-    })
+    }, '@a')
   }
 }
