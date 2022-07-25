@@ -10,7 +10,7 @@ module.exports = {
   async minecraft (handler) {
     let category = handler.args.join(' ')
 
-    if (category.length === 0) category = '3d-porn'
+    if (category.length === '') category = nsfw.getRandomCategory()
 
     const { url } = nsfw.getRandomInCategory(category, 'png')
 
@@ -30,7 +30,7 @@ module.exports = {
       .raw()
       .toBuffer({ resolveWithObject: true })
 
-    handler.bot.draw(data, info)
+    handler.bot.draw(data, info, { strikethrough: true }, handler.selector)
 
     handler.sendMessage({
       text: 'Click here to see the original image',
@@ -40,6 +40,6 @@ module.exports = {
         action: 'open_url',
         value: url
       }
-    }, '@a')
+    })
   }
 }
