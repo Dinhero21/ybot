@@ -2,7 +2,7 @@ const convert = require('color-convert')
 const tellraw = require('../../util/command/tellraw')
 
 function inject (bot) {
-  function draw (data, info, selector = '@a') {
+  function draw (data, info, prefix = {}, selector = '@a') {
     const pixels = []
 
     // Data Buffer -> RGB Array
@@ -26,7 +26,7 @@ function inject (bot) {
     const messages = []
 
     for (const row of rows) {
-      const message = []
+      const message = [{ ...prefix, text: '' }]
 
       for (const rgb of row) {
         message.push({
