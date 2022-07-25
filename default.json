@@ -19,5 +19,16 @@
       "host": "localhost",
       "port": 25565
     }
-  ]
+  ],
+  "advertisements": {
+    "enabled": true,
+    "discord": {
+      "enabled": true,
+      "invite": "https://discord.gg/RpjcUBQzQd"
+    },
+    "prefix": {
+      "enabled": true,
+      "command": "d@help"
+    }
+  }
 }
