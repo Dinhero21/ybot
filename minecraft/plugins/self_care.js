@@ -47,7 +47,7 @@ function inject (bot) {
     gameMode = data.gameMode
   })
 
-  setInterval(() => {
+  const interval = setInterval(() => {
     if (!op) {
       bot.chat('/minecraft:op @s[type=player]')
       return
@@ -57,6 +57,10 @@ function inject (bot) {
     if (!cspy) bot.chat('/cspy on')
     if (gameMode !== 1) bot.chat('/minecraft:gamemode creative')
   }, 1000 * 5)
+
+  bot.once('end', () => {
+    clearInterval(interval)
+  })
 }
 
 module.exports = { inject }
